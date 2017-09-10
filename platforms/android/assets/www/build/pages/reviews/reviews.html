@@ -1,0 +1,67 @@
+<!--
+  Generated template for the ReviewsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar primary *navbar>
+  <ion-title>Reviews</ion-title>
+</ion-navbar>
+
+<ion-content class="reviews feed common-bg">
+  <ion-list class="list-no-border">
+
+    <ion-item *ngFor="let review of reviews" text-wrap class="margin-bottom">
+      <div>
+        <div class="item-header">
+          <img src="{{ review.author.profile_picture}}" class="pull-left item-avatar profile-picture" alt="">
+          <div class="pull-left">
+            <h3>{{ review.author.username }}</h3>
+            <div class="secondary uppercase text-sm">{{ review.author.num_reviews }} Reviews, {{
+              review.author.num_folowers }} Follower
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div>
+        <div class="pull-left secondary text-sm">{{ review.time }}</div>
+        <div class="pull-right secondary text-sm">
+          RATED
+          <span class="rating">
+            {{ review.rating }}
+          </span>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="text-sm" margin-top>
+        {{ review.text }}
+      </div>
+
+      <div class="post-images">
+        <img *ngFor="let photo of review.photos" src="{{ photo.thumb }}">
+      </div>
+
+      <div>
+        <div class="pull-left action-buttons">
+          <ion-icon name="md-heart-outline" danger [hidden]="!review.liked"></ion-icon>
+          <ion-icon name="md-heart-outline" secondary [hidden]="review.liked"></ion-icon>
+          <ion-icon name="ios-chatboxes-outline" danger [hidden]="!review.commented"></ion-icon>
+          <ion-icon name="ios-chatboxes-outline" secondary [hidden]="review.commented"></ion-icon>
+          <ion-icon name="md-share" secondary></ion-icon>
+        </div>
+
+        <div class="pull-right uppercase secondary text-sm">
+          {{ review.num_likes }} likes &bull;
+          {{ review.num_comments }} comments
+        </div>
+
+        <div class="clear"></div>
+      </div>
+
+    </ion-item>
+  </ion-list>
+</ion-content>

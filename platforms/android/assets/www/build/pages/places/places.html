@@ -1,0 +1,64 @@
+<!--
+  Generated template for the PlacesPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar primary *navbar>
+  <ion-title>Places</ion-title>
+
+  <ion-buttons end>
+    <button (click)="goToSearch()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+    <button (click)="showFilters()">
+      <ion-icon name="options"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="places common-bg">
+  <ion-card *ngFor="let place of places" (click)="viewPlace(place.id)">
+    <ion-card-header>
+      <!-- title -->
+      <div>
+        <span class="strong">{{ place.name }}</span>
+        <span class="rating pull-right">{{ place.rating }}</span>
+      </div>
+
+      <!--sub title-->
+      <div class="uppercase text-sm secondary">
+        {{ place.district }}, {{ place.city }}
+      </div>
+
+      <!-- extra info -->
+      <div class="text-sm secondary" padding-bottom>
+        {{ place.num_reviews }} Reviews &bull;
+        {{ place.num_bookmarks }} Bookmarks &bull;
+        {{ place.num_check_in }} Been There
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-33 class="secondary">Cuisines</ion-col>
+          <ion-col width-66>{{ place.cuisines }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-33 class="secondary">Cost</ion-col>
+          <ion-col width-66>{{ place.cost }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-33 class="secondary">Hours</ion-col>
+          <ion-col width-66>{{ getWorkingHours(place.working_hours) }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-25 *ngFor="let photo of limitArray(place.photos, 4)">
+            <img class="round" src="{{ photo.thumb }}" alt="">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

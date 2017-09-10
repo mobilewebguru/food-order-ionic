@@ -1,0 +1,24 @@
+<ion-menu [content]="content">
+
+    <ion-toolbar primary>
+        <ion-title>Menu</ion-title>
+    </ion-toolbar>
+
+    <ion-content>
+        <ion-item class="no-border">
+            <ion-avatar item-left>
+                <img src="img/user/mike.png" alt="">
+            </ion-avatar>
+            <span class="strong">Ben Foster</span>
+        </ion-item>
+        <ion-list>
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon name="md-create"></ion-icon>
+                {{p.title}}
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

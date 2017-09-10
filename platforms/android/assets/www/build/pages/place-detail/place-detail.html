@@ -1,0 +1,169 @@
+<!--
+  Generated template for the PlaceDetailPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar primary *navbar>
+  <ion-title>Place Detail</ion-title>
+  <ion-buttons end>
+    <button>
+      <ion-icon name="md-share"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="place-detail common-bg rlt">
+
+  <!-- content top -->
+  <div class="bg-image" [ngStyle]="{'background-image': 'url(' + place.photos[0].full_size + ')'}">
+
+    <div class="bg-overlay" padding>
+      <div>
+        <div class="pull-left">
+          <h3>{{ place.name}}</h3>
+          <span>{{ place.district }}, {{ place.city }}</span>
+        </div>
+
+        <div class="pull-right" text-right>
+          <div class="rating">{{ place.rating }}</div>
+          <div>{{ place.num_votes }} votes</div>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+
+      <div margin-top>
+        <ion-badge favorite [hidden]="!workingHour.available">OPEN NOW</ion-badge>
+        <ion-badge primary [hidden]="workingHour.available">CLOSE NOW</ion-badge>
+        {{ workingHour.from }}h to {{ workingHour.to }}h
+        <div>
+          {{ place.num_reviews }} Reviews &bull;
+          {{ place.num_photos }} Photos
+        </div>
+      </div>
+
+      <div class="line" margin-top margin-bottom></div>
+      <div margin-bottom>
+        <a href="tel:{{ place.phone }}" class="btn-round">
+          <ion-icon name="call" favorite></ion-icon>
+        </a>
+        <div class="btn-round" (click)="addBookMark(place)">
+          <ion-icon name="bookmark" primary [hidden]="!place.bookmarked"></ion-icon>
+          <ion-icon name="bookmark" [hidden]="place.bookmarked"></ion-icon>
+        </div>
+        <div class="btn-round" (click)="goToMap()">
+          <ion-icon name="pin"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--address-->
+  <div padding class="light-bg">
+    <div class="strong">Address</div>
+    <span>{{ place.address }}</span>
+
+    <p>
+      <a href="{{ place.website }}" primary>
+        Website
+        <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
+      </a>
+    </p>
+  </div>
+  <div class="block-footer" padding text-right (click)="goToMap()">
+    <span primary>Map & Directions</span>
+    <ion-icon primary name="arrow-forward"></ion-icon>
+  </div>
+
+  <!-- menu -->
+  <div padding class="light-bg margin-top-20">
+    <div class="strong">MAIN MENU</div>
+    <div class="menu-title">
+      {{ place.menu[0].name }}
+    </div>
+    <div *ngFor="let item of place.menu[0].items">
+      <span>{{ item.name }}</span>
+      <span class="pull-right">{{ item.price | currency:'USD':true }}</span>
+    </div>
+  </div>
+  <div class="block-footer" padding text-right (click)="goToMenu()">
+    <span primary>See Menu</span>
+    <ion-icon primary name="arrow-forward"></ion-icon>
+  </div>
+
+  <!-- photos -->
+  <div padding class="light-bg margin-top-20">
+    <div class="strong">Photos</div>
+
+    <ion-grid class="grid-no-padding">
+      <ion-row>
+        <ion-col width-25 *ngFor="let photo of limitArray(place.photos, 4)">
+          <img class="round" src="{{ photo.thumb }}" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <button favorite block>
+      Add photo
+    </button>
+  </div>
+  <div class="block-footer" padding text-right (click)="goToPhotos()">
+    <span primary>See All Photos</span>
+    <ion-icon primary name="arrow-forward"></ion-icon>
+  </div>
+
+  <!-- Reviews -->
+  <div padding class="light-bg margin-top-20">
+    <div class="strong">Reviews</div>
+    <div margin-top class="secondary">RECENT REVIEWS</div>
+    <ion-list class="list-no-border">
+      <ion-item *ngFor="let review of place.reviews" text-wrap>
+        <ion-avatar item-left>
+          <img src="{{ review.profile_picture }}" alt="">
+        </ion-avatar>
+        <div class="strong">{{ review.username }}</div>
+        <div class="text-sm">
+          <span class="strong">RATED</span>
+          <span class="rating">{{ review.rating }}</span>
+          {{ review.comment }}
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="block-footer" padding text-right (click)="goToReviews()">
+    <span primary>Read All Review({{ place.num_reviews }})</span>
+    <ion-icon primary name="arrow-forward"></ion-icon>
+  </div>
+
+  <!-- Other info -->
+  <div padding class="light-bg margin-top-20">
+    <span class="strong">Hours</span>
+    <ion-badge favorite [hidden]="!workingHour.available">OPEN NOW</ion-badge>
+    <ion-badge primary [hidden]="workingHour.available">CLOSE NOW</ion-badge>
+    <div class="strong">
+      {{ workingHour.from }}h to {{ workingHour.to }}h
+    </div>
+    <span primary>View All Days</span>
+
+    <div class="strong" margin-top>Cuisines</div>
+    <div>{{ place.cuisines }}</div>
+
+    <div class="strong" margin-top>Cost</div>
+    <div>{{ place.cost | currency:'USD':true }}</div>
+
+    <div>
+      <ion-icon name="card"></ion-icon>
+      <span *ngIf="place.accepted_card && place.accepted_cash">Cash & card accepted</span>
+      <span *ngIf="place.accepted_card && !place.placeaccepted_cash">Card accepted</span>
+      <span *ngIf="!place.accepted_card && place.accepted_cash">Cash accepted</span>
+    </div>
+
+    <div class="strong" margin-top>Highlights</div>
+    <div *ngFor="let item of place.highlights">
+      <ion-icon name="checkmark-circle" favorite></ion-icon>
+      {{ item }}
+    </div>
+  </div>
+
+</ion-content>

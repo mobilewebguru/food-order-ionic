@@ -1,0 +1,30 @@
+<!--
+  Generated template for the SelectLocationPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar primary *navbar>
+  <ion-title>Select Location</ion-title>
+</ion-navbar>
+
+<ion-content class="select-location">
+  <div padding class="common-bg">
+    Auto-detect current location
+    <ion-icon class="pull-right" ios="ios-locate-outline" md="md-locate"></ion-icon>
+  </div>
+
+  <div class="search-form">
+    <ion-icon name="ios-search"></ion-icon>
+    <ion-input type="text" placeholder="Start typing your locations..."></ion-input>
+  </div>
+
+  <div class="common-bg secondary" padding>
+    RECENT SEARCHES
+  </div>
+
+  <div *ngFor="let search of searches" padding>
+    {{ search.name }}
+
+  </div>
+</ion-content>

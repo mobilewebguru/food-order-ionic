@@ -1,0 +1,114 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar primary hideBackButton="true">
+  <button class="nav-button" (click)="selectLocation()">
+    {{ currentLocation }}
+    <ion-icon name="ios-arrow-down" class="text-md"></ion-icon>
+  </button>
+  <ion-buttons end>
+    <button (click)="goToBookmarks()">
+      <ion-icon name="bookmark"></ion-icon>
+    </button>
+    <button (click)="goToSearch()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="home common-bg">
+
+  <!-- Slider -->
+  <ion-slides pager class="pager-inner">
+
+    <ion-slide *ngFor="let slide of slides">
+      <img src="{{ slide.src }}" alt="">
+    </ion-slide>
+
+  </ion-slides>
+
+  <div padding>
+    <!-- Nearby button -->
+    <ion-item padding light class="no-border" (click)="goToNearBy()">
+      <ion-icon name="pin"></ion-icon>
+      Nearby
+      <ion-icon name="arrow-forward" secondary class="pull-right"></ion-icon>
+    </ion-item>
+
+    <!-- Categories -->
+    <div text-center margin-top margin-bottom class="secondary">
+      Here are 6 ways to think about your next meal
+    </div>
+
+    <ion-grid class="grid-no-padding">
+
+      <ion-row>
+
+        <ion-col>
+          <ion-item class="no-border" (click)="viewPlaces()">Breakfast</ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item class="no-border" (click)="viewPlaces()">Delivery</ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col>
+          <ion-item class="no-border" (click)="viewPlaces()">Lunch</ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item class="no-border" (click)="viewPlaces()">Dinner</ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col>
+          <ion-item class="no-border" (click)="viewPlaces()">Take out</ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item class="no-border" (click)="viewPlaces()">See All</ion-item>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <!-- All places -->
+    <ion-item class="margin-top no-border light-bg" (click)="goToNearBy()">
+      <ion-icon name="pin"></ion-icon>
+      All places in {{ currentLocation }}
+      <ion-icon name="arrow-forward" secondary class="pull-right"></ion-icon>
+    </ion-item>
+
+  </div>
+
+  <!-- Popular -->
+  <div text-center class="secondary margin-top margin-bottom">
+    Popular nearby
+  </div>
+
+  <div class="light-bg card" margin-bottom>
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col class="rlt" width-33 *ngFor="let place of popularPlaces" (click)="viewPlace(place.id)">
+          <img class="round" src="{{ place.photos[0].thumb }}" alt="">
+          <div class="item-rating">{{ place.rating }}</div>
+          <div class="text-md strong">{{ place.name }}</div>
+          <div class="text-sm secondary">{{ place.district }}</div>
+          <div class="text-sm secondary">{{ place.cuisines }}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="block-footer" padding text-right (click)="viewPlaces()">
+      <span primary>See more ></span>
+    </div>
+  </div>
+</ion-content>

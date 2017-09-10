@@ -1,0 +1,251 @@
+// http://ionicframework.com/docs/v2/theming/
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+@import "../pages/home/home";
+@import "../pages/places/places";
+@import "../pages/filters/filters";
+@import "../pages/place-detail/place-detail";
+@import "../pages/collections/collections";
+@import "../pages/feed/feed";
+@import "../pages/bookmarks/bookmarks";
+@import "../pages/add-bottle/add-bottle.scss";
+
+// common class
+a {
+  text-decoration: none;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.rlt {
+  position: relative;
+}
+
+.clear {
+  clear: both;
+}
+
+.secondary {
+  color: color($colors, secondary);
+}
+
+.light {
+  color: color($colors, light);
+}
+
+.common-bg {
+  background: color($colors, bgColor);
+}
+
+.light-bg {
+  background: color($colors, light);
+}
+
+.border-bottom {
+  border-bottom: 1px solid color($colors, bgColor);
+}
+
+.list-form {
+
+  .item {
+    padding-left: 0;
+  }
+
+  .item:first-child {
+    border-top: 0;
+  }
+}
+
+.list-no-border {
+
+  .item:first-child {
+    border: none;
+  }
+  .item:last-child {
+    border: none;
+  }
+
+  .item-inner {
+    border: none;
+  }
+}
+
+.list-full-border {
+  @extend .list-no-border;
+
+  .item,
+  .item:first-child,
+  .item:last-child {
+    border-bottom: 1px solid color($colors, bgColor);
+  }
+}
+
+.item.no-border {
+
+  .item-inner {
+    border: none;
+  }
+}
+
+.grid-no-padding {
+
+  padding: 0;
+
+  ion-col:first-child {
+    padding-left: 0;
+  }
+
+  ion-col:last-child {
+    padding-right: 0;
+  }
+}
+
+img.round {
+  border-radius: 5px;
+}
+
+.profile-picture {
+  border-radius: 50%;
+}
+
+// text styles
+.text-xs {
+  font-size: 0.6em;
+}
+
+.text-sm {
+  font-size: 0.8em;
+}
+
+.text-md {
+  font-size: 1em !important
+}
+
+.text-lg {
+  font-size: 2em;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+// nav bar style
+ion-tabs {
+
+  ion-navbar.toolbar {
+    padding: 0 4px;
+
+    .button {
+      margin: 0;
+    }
+  }
+}
+
+// slider styles
+.swiper-pagination-bullet {
+  background: color($colors, light);
+  opacity: 1;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: color($colors, danger);
+}
+
+// place style
+.rating {
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 1px;
+  color: color($colors, light);
+  background: color($colors, favorite);
+}
+
+.item-rating {
+  @extend .rating;
+  padding: 4px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 0 5px 0 5px;
+}
+
+.block-footer {
+  border-top: 1px solid color($colors, bgColor);
+  background: #FDFBFD;
+}
+
+.search-form {
+  margin-bottom: 1px;
+  padding-left: 40px;
+  position: relative;
+
+  ion-icon {
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    color: #999999;
+  }
+}
+
+// button set
+.button-set {
+  display: flex;
+  padding: 10px;
+
+  button {
+    border-right: 0;
+  }
+
+  button:first-child {
+    border-radius: 4px 0 0 4px;
+  }
+
+  button:last-child {
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+// map style
+#map_canvas {
+  height: 100%;
+}
+
+// float button
+.button-fab {
+  &.fixed {
+    position: fixed;
+  }
+}

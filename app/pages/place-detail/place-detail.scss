@@ -1,0 +1,44 @@
+.place-detail {
+
+  .bg-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    color: color($colors, light);
+
+    .rating {
+      font-size: 1.2em;
+      padding: 4px 8px;
+      margin-bottom: 5px;
+    }
+
+    .line {
+      width: 100%;
+      border-top: 1px solid color($colors, secondary);
+    }
+
+    .btn-round {
+      display: inline-block;
+      padding: 10px 15px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 2em;
+    }
+
+    a {
+      ion-icon {
+
+      }
+    }
+  }
+
+  ion-badge {
+    font-size: 0.8em;
+  }
+
+  .menu-title {
+    border-bottom: 1px solid color($colors, bgColor);
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+}
